@@ -1,0 +1,31 @@
+ 암묵적 형변환(Implicit casting): 자바 언어가 자동으로 해주는 형변환
+
+  primitive type 에서 implicit casting 방향
+
+   byte -> short -> int -> long -> float -> double
+                      ↑
+                    char
+ 명시적 형변환(Explicit casting): 프로그래머가 직접 타입을 변환하는 것
+
+   (변환하고자 하는 타입명)변수/값
+
+
+   short s1 =234;
+        int n1 = s1; // short -> int로 형변환가능
+        double d1 = n1; //int -> double
+
+        char ch1 = 'A';
+        //s1 = ch1; 안됨 // char 타입을 short타입으로 형변환불가능 
+        n1 = ch1 ; // char - > int 됨
+
+
+ 상수: final
+ 변수 선언 엎에 final키워드를 사용하면
+ '상수(constant)'가 되어
+ 한번 값을 대입하면 변경할 수 없게 된다
+
+ 관례적으로 상수값을 담는 상수명은 대문자로 작성
+
+  final double PI;
+        PI= 3.141592;
+        //PI= 3.141592; final 사용했으므로 값 변경 못함
