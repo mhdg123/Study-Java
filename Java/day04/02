@@ -1,0 +1,10 @@
+      System.out.print("나이를 입력하세요: ");
+        int age = sc.nextInt();
+
+        sc.nextLine();  // 숫자입력 받은뒤에 문자열 입력시에는 반드시 nextLine() 등으로 버퍼 비우기
+
+        System.out.print("주소를 입력하세요: ");
+        String addr = sc.nextLine();
+
+왜냐면 sc.nextLine()은 공백까지 읽히므로 바로 다음 주소를 입력하려 했을 때 나이 입력하고 Enter를 치게 되면 공백으로 그 값을 채움 
+이미 공백으로 값이 채워지고 넘어간 다음 주소를 입력하세요라는 문자열이 나오면 더이상 입력할 곳이 없어짐 
