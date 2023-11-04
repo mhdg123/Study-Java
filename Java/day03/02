@@ -1,0 +1,48 @@
+서식화된 문자열(formatted String)
+  
+화면에 출력할때는 printf()
+
+    printf("서식문자열", 값1, 값2, ...)
+
+    문자열(String)으로 만들때는 String.format()
+
+    String.format("서식문자열", 값1,값2,...)
+
+    format specifier (서식 지정자)
+        %d: 십진수 정수로 출력
+        %f: 실수로 출력
+        %s: 문자열 출력
+        %c: '문자하나' 출력
+        %x: 16진수로 출력
+        %%: %출력
+
+double pi = Math.PI; //원주율
+System.out.printf("원주율 %f\n",pi); // %f: 기본 실수 출력(소숫점 6자리까지)
+System.out.printf("원주율 %.2f\n",pi); // %f: 기본 실수 출력(소숫점 2자리까지)
+
+ //출력폭 지정, 좌우정렬
+        System.out.printf("|%d||%d||%d|\n",100,200,300);
+        System.out.printf("|%5d||%5d||%5d|\n",100,200,300); //폭 5칸에 맞춰서 출력(우측정렬)
+        System.out.printf("|%-5d||%-5d||%-5d|\n",100,200,300); //폭 5칸, 좌측 정렬
+// 값을 포함해서 5칸 차지함 
+
+String fmt = "주소: %s, 우편번호[%05d]\n"; //0을 사용하면 비어있는 곳은 0으로 채워줌
+  System.out.printf(fmt ,"서울",345); //출력이 00345로 됨 
+
+//String.format()
+        //기본적으로 printf()와 사용법은 동일함
+        //단, 화면에 출력하는게 아니라, 결과를 문자열(String)로 만들어서 리턴
+
+        String result = String.format("합격률은 %.1f%%입니다.",34.78);
+        System.out.println(result);
+
+        //Text Block 으로 포맷팅
+        String textblock = """
+               
+                    "title": %s,
+                    "author": %s,
+                    "id": %d
+               
+                """.formatted("hi","작가",2);
+        System.out.println(textblock);
+
