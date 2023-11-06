@@ -1,0 +1,100 @@
+삼항 연산자(ternary operator)
+ * (조건식) ? 선택1 : 선택2
+ * (조건식)이 true이면 선택1이 선택되고
+ * (조건식)dl false이면 선택2가 선택됨
+
+ 중첩된 if (nested-if)문
+   조건문 안의 조건문
+
+  하나의 조건을 만족 후 두번째 조건을 만족해야 할 때 중첩 if문 사용 
+
+  String 비교, char비교
+  -문자열 비교는 절대로 ==을 사용하지 말자
+  -문자열 비교는 equals(), equalsIgnoreCase() 사용!
+  -char는 기본적으로 정수값(아스키 코드값)이라 일반 산술 비교가능
+
+  String은 값을 비교하는게 아니라 주소값을 비교하므로 equals를 사용해야함 
+
+
+  switch - case 조건문
+ 
+  switch (조건값){
+  case 값1:
+    ...
+    break;
+  case 값2:
+    ...
+    break;
+  default:
+    ...
+    break;
+}
+ 
+  해당 조건의 case문을 찾아서 거기서부터 break를 만날 때까지 실행을 함
+  break를 만나게 되면 switch 문장을 종료
+  해당하는 case가 없으면 default 문장을 실행함
+*모든 switch 조건문은 if- else if - else로 바꿀 수 있다.(할 수 있어야 한다) 
+
+ switch()의 조건문안에는 int로 형변환 가능한 값만 들어올 수 있음
+실수는 불가능 
+그리고 default를 써서 무조건 값을 반환하는 변수를 초기화해줘야 함 default를 쓰지 않을 거라면 switch문 바깥에서 초기화해줘야함
+
+ enum 타입 정의하는 방법: (enumeration)
+ enum 이름{}
+ enum 타입 정의: 메소드 안에서는 할 수 없다
+
+public enum day{MONDAY, TUESDAY, WEDNSEDAY, THURSDAY, FRIDAY, SATURDAY, SUNDAY};
+
+enum타입을 따로 만들 수도 있고 클래스 안에서 정의할 수 있다
+
+  public class c{
+        enum Days{SUN, MON, TUE, WED, THU, FRI, SAT}
+main 클래스에서 사용 할 수 있는데
+  Days day1= Days.TUE; 이렇게 해서 Days타입의 day1의 변수를 지정해서 값 저장 가능
+
+  위에 만들어 놓은 enum day를 다른페이지에서 사용하려면 import해서 사용 가능함 
+
+  switch문을 간단하게 사용할 수 있다
+    화살표 case라벨과 다중 케이스 라벨
+
+  switch(day1){
+    case MONDAY, FRIDAY, SUNDAY -> System.out.println(6); 
+    화살표 case 라벨 (->) 사용하면 마지막에 break 사용한 것과 동일
+
+Day.day = Day.MONDAY;
+  이렇게도 가능 변수에 switch문의 값을 담아놓고 출력해도됨 
+        int numLetters = switch (day) {
+                    case MONDAY, FRIDAY, SUNDAY ->6;
+                    case TUESDAY -> 7;
+                    case THURSDAY, SATURDAY -> 8;
+                    case WEDNSEDAY -> 9;
+                };
+                System.out.println("numLetters1 ="+numLetters);
+// case값은 enum에 있는 것만 사용가능
+
+  그리고 이 구문에다가 값을 반환하기 전 어떠한 문구를 추가하고 싶다면 yield 사용해야함 
+      int numLetters = switch (day) {
+                    case MONDAY, FRIDAY, SUNDAY ->{
+                       System.out.println("Six");
+                        yield 6; }
+                    case TUESDAY -> 7;
+                    case THURSDAY, SATURDAY -> 8;
+                    case WEDNSEDAY -> 9;
+                };
+                System.out.println("numLetters1 ="+numLetters);
+
+    switch()문에 enum값이 아닌 String값을 넣는다면 
+    String s="MONDAY";
+        int numLetters1 = switch(s){
+                    case "MONDAY", "FRIDAY", "SUNDAY" -> 6;
+                    case "TUESDAY" -> 7;
+                    case "THURSDAY", "SATURDAY" -> 8;
+                    case "WEDNESDAY" -> 9;
+                    default -> -1;
+                };
+
+    다 쌍따옴표로 묶어줘야 하고 문자열은 꼭 default가 필요함 
+    enum은 값이 설정되어있는 그 가용할 수 있는 모든 값을 다써야지만 에러가 나지 않음
+    하지만 문자열은 가용할 수 있는 수가 무한대여서 default값이 필요
+
+    
